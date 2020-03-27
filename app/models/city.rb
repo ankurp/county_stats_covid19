@@ -3,6 +3,6 @@ class City < ApplicationRecord
   has_many :cases
 
   def total_cases
-    cases.map(&:count).reduce(:+)
+    cases.map(&:count).reduce(:+) || 0
   end
 end
