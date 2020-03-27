@@ -6,11 +6,11 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module MiddlesexNjCovid19
+module CountyStats
   class Application < Rails::Application
     # Expose our application's helpers to Administrate
     config.to_prepare do
-      Administrate::ApplicationController.helper MiddlesexNjCovid19::Application.helpers
+      Administrate::ApplicationController.helper CountyStats::Application.helpers
     end
     config.active_job.queue_adapter = :sidekiq
     config.application_name = Rails.application.class.module_parent_name
