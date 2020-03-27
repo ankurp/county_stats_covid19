@@ -1,5 +1,5 @@
 {
-  "name": "middlesex_nj_covid19",
+  "name": "county_stats_covid19",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
