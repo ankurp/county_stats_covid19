@@ -7,7 +7,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
-    <%= link_to Rails.configuration.application_name, root_path, class: "navbar-brand" %>
+    <%= link_to 'Middlesex County COVID-19 Cases', root_path, class: "navbar-brand" %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -18,14 +18,8 @@
       </ul>
 
       <ul class="navbar-nav">
-        <li class="nav-item"><%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %></li>
+        <li class="nav-item"><%= link_to "Annoucements", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %></li>
         <% if user_signed_in? %>
-
-        <li class="nav-item">
-          <%= link_to notifications_path, class: "nav-link" do %>
-            <span><i class="far fa-bell" aria-hidden="true"></i></span>
-          <% end %>
-         </li>
 
           <li class="nav-item dropdown">
             <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>

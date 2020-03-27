@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_163926) do
+ActiveRecord::Schema.define(version: 2020_03_27_183944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,31 @@ ActiveRecord::Schema.define(version: 2020_03_27_163926) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cases", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.integer "count"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_cases_on_city_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.bigint "county_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["county_id"], name: "index_cities_on_county_id"
+  end
+
+  create_table "counties", force: :cascade do |t|
+    t.string "name"
+    t.bigint "state_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_counties_on_state_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -60,6 +85,13 @@ ActiveRecord::Schema.define(version: 2020_03_27_163926) do
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.string "abbreviation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -76,5 +108,8 @@ ActiveRecord::Schema.define(version: 2020_03_27_163926) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cases", "cities"
+  add_foreign_key "cities", "counties"
+  add_foreign_key "counties", "states"
   add_foreign_key "services", "users"
 end

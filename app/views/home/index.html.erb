@@ -1,2 +1,19 @@
-<h1>Welcome to Jumpstart!</h1>
-<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+<% @counties.each do |county| %>
+  <h1>Below are cases in <%= county.name %> County</h1>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <th>City/Borough/Township</th>
+        <th>Total COVID19 Cases</th>
+      </thead>
+      <tbody>
+        <% county.cities.each do |city| %>
+          <tr>
+            <td><%= city.name %></td>
+            <td><%= city.total_cases %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>    
+<% end %>

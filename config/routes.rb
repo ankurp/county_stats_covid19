@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :announcements
     resources :notifications
     resources :services
+    resources :counties
+    resources :cities
+    resources :cases
 
     root to: "users#index"
   end
