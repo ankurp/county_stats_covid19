@@ -1,5 +1,8 @@
 <% @counties.each do |county| %>
-  <h1><%= county.name %> County Total <%= county.total_cases %></h1>
+  <div class="text-center">
+    <h1><%= county.name %> County Total <%= county.total_cases %></h1>
+    <%= county.graph.html_safe %>
+  </div>
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
       <thead>

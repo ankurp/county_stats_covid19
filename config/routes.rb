@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :announcements
-    resources :notifications
-    resources :services
+    # resources :notifications
+    # resources :services
     resources :counties
     resources :cities
     resources :cases
+    
+    get 'cases/:date', to: 'cases#edit_by_date'
 
     root to: "users#index"
   end
@@ -18,8 +20,7 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
 
-
-  resources :notifications, only: [:index]
+  # resources :notifications, only: [:index]
   resources :announcements, only: [:index]
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root to: 'home#index'

@@ -1,0 +1,32 @@
+<% content_for(:title) do %>
+  <%= t(
+    "administrate.actions.new_resource",
+    name: "Cases for #{@county.name}"
+  ) %>
+<% end %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title">
+    <%= content_for(:title) %>
+  </h1>
+
+  <div>
+    <%= link_to t("administrate.actions.back"), :back, class: "button" %>
+  </div>
+</header>
+
+<section class="main-content__body">
+  <%= form_for([namespace, @county], html: { class: "form" }) do |f| %>
+    <div style="position: relative;">
+      <%= text_field_tag :date, Time.now.strftime('%Y-%m-%d'), class: 'form-control', placeholder: "03/03/2020", :"data-type" => 'date' %>
+    </div>
+    <% @county.cities.each do |city| %>
+      <div>
+        <%= city.name %>: <%= text_field city.cases.build, :count, class: 'form-control', placeholder: "Count" %>
+      </div>
+    <% end %>
+    <div class="form-actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</section>
