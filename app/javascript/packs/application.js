@@ -8,6 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("local-time").start()
+require("chartkick")
+require("chart.js")
 
 window.Rails = Rails
 
