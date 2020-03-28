@@ -7,11 +7,15 @@ class County < ApplicationRecord
   end
 
   def chart_data
+    first_date = Case.order(:date).first.date
+    data = (first_date..Date.today).reduce({}) do |res, d|
+      res.merge({ d => 0 })
+    end
     result = cities.map { |city|
       {
         name: city.name,
-        data: city.cases.reduce({}) do |result, c|
-          result.merge({ c.date => c.count })
+        data: city.cases.reduce(data) do |res, c|
+          res.merge({ c.date => c.count })
         end
       }
     }
