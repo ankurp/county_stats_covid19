@@ -9,7 +9,6 @@
         <th>Borough / City / Township</th>
         <th>Total COVID19 Cases</th>
         <th>Cases/1M people</th>
-        <th>Trend</th>
       </thead>
       <tbody>
         <% county.cities.where(is_hidden: false).each do |city| %>
@@ -17,7 +16,9 @@
             <td><%= city.name %></td>
             <td><%= city.total_cases %></td>
             <td><%= city.cases_per_million %></td>
-            <td><%= line_chart city.chart_data, legend: false %></td>
+          </tr>
+          <tr>
+            <td colspan=3><%= line_chart city.chart_data, legend: false %></td>
           </tr>
         <% end %>
       </tbody>
