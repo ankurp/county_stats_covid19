@@ -1,0 +1,18 @@
+<%= render @city %>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <th>Date</th>
+      <th>Cases</th>
+    </thead>
+    <tbody>
+      <% @city.cases.each do |kase| %>
+        <tr>
+          <td><%= kase.date.strftime('%A %B %d') %></td>
+          <td><%= kase.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
