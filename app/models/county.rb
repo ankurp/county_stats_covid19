@@ -11,7 +11,7 @@ class County < ApplicationRecord
     data = (first_date..Date.today).reduce({}) do |res, d|
       res.merge({ d => 0 })
     end
-    cities.reduce({}) { |result, city|
+    cities.sort_by(&:total_cases).reverse.reduce({}) { |result, city|
       result.merge({
         city.name => city.total_cases
       })

@@ -18,10 +18,12 @@
             <td><%= city.cases_per_million %></td>
           </tr>
           <tr>
-            <td colspan=3><%= line_chart city.chart_data, legend: false %></td>
+            <td colspan=3>
+              <%= line_chart city.chart_data, colors: ["##{SecureRandom.hex(3)}"], legend: false %>
+            </td>
           </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
     </div>
   <% end %>
 <% end %>
