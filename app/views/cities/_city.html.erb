@@ -9,7 +9,15 @@
       <tr>
         <td><%= link_to city.name, city %></td>
         <td><%= city.total_cases %></td>
-        <td><%= city.cases_per_million %></td>
+        <td>
+          <% if city.cases_per_million > 1000 %>
+            <span class="badge badge-warning">
+              <%= city.cases_per_million %>
+            </span>
+          <% else %>
+            <%= city.cases_per_million %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td colspan=3>
