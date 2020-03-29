@@ -26,7 +26,6 @@ class CityDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   name
   population
-  is_hidden
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

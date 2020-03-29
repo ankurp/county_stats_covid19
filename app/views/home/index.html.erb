@@ -12,7 +12,7 @@
         <th>Trend</th>
       </thead>
       <tbody>
-        <% county.cities.each do |city| %>
+        <% county.cities.where(is_hidden: false).each do |city| %>
           <tr>
             <td><%= city.name %></td>
             <td><%= city.total_cases %></td>
