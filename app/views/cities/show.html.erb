@@ -8,7 +8,7 @@
     <span class="badge badge-danger">Has a total of <%= @city.total_cases %> <%= 'cases'.pluralize(@city.total_cases) %></span>
   </p>
   <hr class="my-4">
-  <p><%= @city.name %> has about <span class="badge badge-warning"><%= @city.cases_per_million %> cases per 1 million people</span> based on the <span class="badge badge-primary">population of <%= number_to_human(@city.population, significant: false) %></span>.</p>
+  <p><%= @city.name %> has about <span class="badge badge-warning"><%= @city.cases_per_million %> cases per 1 million people</span> based on the <span class="badge badge-primary">population of about <%= number_to_human(@city.population, precision: 0, significant: false) %></span>.</p>
   <%= line_chart @city.chart_data, colors: ["##{SecureRandom.hex(3)}"], legend: false %>
 </div>
 
