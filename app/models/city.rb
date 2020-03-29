@@ -13,7 +13,7 @@ class City < ApplicationRecord
 
   def chart_data
     first_date = cases.order(:date).first.try(:date) || Date.today
-    data = (first_date..Date.today).reduce({}) do |res, d|
+    data = (first_date...Date.today).reduce({}) do |res, d|
       res.merge({ d => 0 })
     end
     
