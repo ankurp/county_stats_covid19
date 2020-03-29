@@ -11,14 +11,10 @@ class County < ApplicationRecord
     data = (first_date..Date.today).reduce({}) do |res, d|
       res.merge({ d => 0 })
     end
-    result = cities.map { |city|
-      {
-        name: city.name,
-        data: city.cases.reduce({}.merge(data)) do |res, c|
-          res.merge({ c.date => c.count })
-        end
-      }
+    cities.reduce({}) { |result, city|
+      result.merge({
+        city.name => city.total_cases
+      })
     }
-    result
   end
 end
