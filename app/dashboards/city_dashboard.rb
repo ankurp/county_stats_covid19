@@ -11,6 +11,7 @@ class CityDashboard < Administrate::BaseDashboard
     county: Field::BelongsTo.with_options(class_name: "County"),
     id: Field::Number,
     name: Field::String,
+    population: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
 
@@ -23,12 +24,14 @@ class CityDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   name
+  population
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   name
+  population
   county
   ].freeze
 
@@ -37,6 +40,7 @@ class CityDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   name
+  population
   county
   ].freeze
 
