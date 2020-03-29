@@ -11,6 +11,7 @@ class CityDashboard < Administrate::BaseDashboard
     county: Field::BelongsTo.with_options(class_name: "County"),
     id: Field::Number,
     name: Field::String,
+    is_hidden: Field::Boolean,
     population: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -25,6 +26,7 @@ class CityDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   name
   population
+  is_hidden
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -32,6 +34,7 @@ class CityDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   name
   population
+  is_hidden
   county
   ].freeze
 
@@ -41,6 +44,7 @@ class CityDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   name
   population
+  is_hidden
   county
   ].freeze
 

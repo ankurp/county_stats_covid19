@@ -3,6 +3,8 @@ class City < ApplicationRecord
   has_many :cases
   attr_accessor :total_num_cases 
 
+  default_scope { where(is_hidden: false) }
+
   def total_cases
     @total_num_cases ||= cases.map(&:count).reduce(:+) || 0
   end
