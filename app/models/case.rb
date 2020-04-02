@@ -10,4 +10,8 @@ class Case < ApplicationRecord
   def set_date_if_empty
     self.date ||= Date.today
   end
+
+  def self.first_case_date
+    @@first_date_of_case ||= self.unscoped.all.order(:date).first.try(:date) || Date.today
+  end
 end

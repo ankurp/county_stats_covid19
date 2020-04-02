@@ -12,16 +12,15 @@ class City < ApplicationRecord
   end
 
   def chart_data
-    first_date = cases.order(:date).first.try(:date) || Date.today
-    data = (first_date...Date.today).reduce({}) do |res, d|
-      res.merge({ d => 0 })
+    data = (Case.first_case_date...Date.today).reduce({}) do |res, d|
+      res.merge({ d.strftime('%m/%d/%Y') => 0 })
     end
     
     [{
       name: name,
       data: cases.reduce({}.merge(data)) do |res, c|
-        res.merge({ c.date => c.count })
-      end
+        res.merge({ c.date.strftime('%m/%d/%Y') => c.count })
+      end.sort_by { |key| key }.to_h
     }]
   end
 end
