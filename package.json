@@ -13,7 +13,9 @@
     "expose-loader": "^0.7.5",
     "jquery": "^3.4.1",
     "local-time": "^2.1.0",
+    "moment": "^2.24.0",
     "popper.js": "^1.16.1",
+    "selectize": "^0.12.6",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

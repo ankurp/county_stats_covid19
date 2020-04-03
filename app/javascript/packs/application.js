@@ -4,12 +4,14 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
+require("selectize")
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("local-time").start()
 require("chartkick")
 require("chart.js")
+require("./datepicker")
 
 window.Rails = Rails
 

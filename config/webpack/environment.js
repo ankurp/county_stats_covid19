@@ -4,7 +4,8 @@ const webpack = require('webpack')
 environment.plugins.append('Provide', new webpack.ProvidePlugin({
   $: 'jquery',
   jQuery: 'jquery',
-  Rails: '@rails/ujs'
+  Rails: '@rails/ujs',
+  moment: 'moment'
 }))
 
 module.exports = environment
